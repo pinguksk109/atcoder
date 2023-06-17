@@ -10,7 +10,7 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		//不要なんだけど、atcoderの入力例に揃える為に必要
+		//不要だが、問題の入力の形に揃える為に必要
 		Integer card = sc.nextInt();
 		sc.nextLine();
 		
