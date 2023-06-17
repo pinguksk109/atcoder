@@ -1,42 +1,37 @@
 package atcoder.beginners.selection.abc088b;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		int card = sc.nextInt();
-
+		Integer card = sc.nextInt();
 		
-//		// 
-//		Scanner str = new Scanner(System.in);
-//        String[] array = new String[card];
-//	    for (int i = 0; i < card; i++) {
-//			array[i] = str.next();
-//	    }
-		
-		int[] cards = new int [card];
+		Integer[] cards = new Integer [card];
 		for(int i = 0; i < card; i++) {
 			cards[i] = sc.nextInt();
 		}
 		sc.close();
 		
-		Score(cards);
+		calculateScore(cards);
 	}
 	
-	public static void Score(int[] cards) {
+	public static void calculateScore(Integer[] cards) {
 		int aliceScore = 0;
 		int bobScore = 0;
 		
-        for (int i = cards.length - 1; i >= 0; i -= 2) {
-            aliceScore += cards[i];
-
-            if (i - 1 >= 0) {
-                bobScore += cards[i - 1];
-            }
-        }
+		Arrays.sort(cards, Collections.reverseOrder());
 		
+		for(int i = 0; i < cards.length; i++) {
+			if(i % 2 == 0) {
+				aliceScore += cards[i];
+			} else {
+				bobScore += cards[i];
+			}
+		}
 		System.out.println(aliceScore - bobScore);
 	}
 }
