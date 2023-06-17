@@ -1,35 +1,43 @@
 package atcoder.beginners.selection.abc088b;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		Integer card = sc.nextInt();
 		
-		Integer[] cards = new Integer [card];
-		for(int i = 0; i < card; i++) {
-			cards[i] = sc.nextInt();
+		//不要なんだけど、atcoderの入力例に揃える為に必要
+		Integer card = sc.nextInt();
+		sc.nextLine();
+		
+		List<Integer> cards = new ArrayList<>();
+		String str = sc.nextLine();
+		String[] cardsString = str.split(" ");
+		for(String cardString : cardsString) {
+			int number = Integer.parseInt(cardString);
+			cards.add(number);
 		}
+		
 		sc.close();
 		
 		calculateScore(cards);
 	}
 	
-	public static void calculateScore(Integer[] cards) {
+	public static void calculateScore(List<Integer> cards) {
 		int aliceScore = 0;
 		int bobScore = 0;
 		
-		Arrays.sort(cards, Collections.reverseOrder());
+		Collections.sort(cards, Collections.reverseOrder());
 		
-		for(int i = 0; i < cards.length; i++) {
+		for(int i = 0; i < cards.size(); i++) {
 			if(i % 2 == 0) {
-				aliceScore += cards[i];
+				aliceScore += cards.get(i);
 			} else {
-				bobScore += cards[i];
+				bobScore += cards.get(i);
 			}
 		}
 		System.out.println(aliceScore - bobScore);
