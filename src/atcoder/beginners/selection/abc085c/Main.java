@@ -13,8 +13,8 @@ public class Main {
 		getTotalAmount(moneyCount, sumMoney);
 	}
 
-	private static void getTotalAmount(Integer moneyCount, Integer sumMoney) {
-		
+	private static String getTotalAmount(Integer moneyCount, Integer sumMoney) {
+		int i = 0;
 		for(int x = 0; x <= moneyCount; x++) {
 			for(int y = 0; y <= moneyCount - x; y++) {
 				int remainingMoney = sumMoney - (10000 * x + 5000 * y);
@@ -22,11 +22,14 @@ public class Main {
 				
 				if(remainingMoney == 1000 * yRemaining) {
 					System.out.println(x + " " + y + " " + yRemaining);
-					break;
-				} else {
-					System.out.println("-1 -1 -1");
+					i++;
+					return "end";
 				}
 			}
 		}
+		if(i == 0) {
+			System.out.println("-1 -1 -1");
+		}
+		return "end";
 	}
 }
